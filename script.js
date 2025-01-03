@@ -8,6 +8,7 @@ const amount = document.getElementById('amount')//valor no input
 const currency = document.getElementById('currency')
 const footer = document.querySelector('main footer')
 const description = document.getElementById('description')
+const result = document.getElementById('result')
 
 
 //manipulação da variavel amout para que ela so receba valores numericos
@@ -36,6 +37,16 @@ function convertCurrency(amount, price, symbol) {
     try {
         //exibindo a cotação da moeda selecionada
         description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
+        //calculo da conversao 
+        let total = price * amount
+
+        //verifica de o total é um valor numerico
+        if (isNaN(total)) {
+            return alert('Por favor,digite o valor corretamente para converter.')
+        }
+
+        //exibe o resultado com a formatacao
+        result.textContent = `${formatCurrencyBRL(total).replace('R$', '')} Reais`
 
         //classe que exibe o footer
         footer.classList.add('show-result')
