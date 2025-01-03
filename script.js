@@ -6,6 +6,7 @@ const GPB = 7.6
 const form = document.querySelector('form')
 const amount = document.getElementById('amount')//valor no input
 const currency = document.getElementById('currency')
+const footer = document.querySelector('main footer')
 
 
 //manipulação da variavel amout para que ela so receba valores numericos
@@ -31,5 +32,12 @@ form.onsubmit = (event) => {
 }
 
 function convertCurrency(amount, price, symbol) {
-    console.log(amount, price, symbol)
+    try {
+        //classe que exibe o footer
+        footer.classList.add('show-result')
+    } catch (error) {
+        footer.classList.remove('show-class')
+        console.log(error)
+        alert('Nao foi possivel realizar a conversao, tente novamente mais tarde')
+    }
 }
